@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RidehistoryFragment()).commit();
         } else if (itemId == R.id.nav_settings) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
+        } else if (itemId == R.id.nav_scheduled_rides) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ScheduledRidesFragment()).commit();
         } else if (itemId == R.id.nav_logout) {
             auth.signOut();
             Toast.makeText(this, "Logout successful", Toast.LENGTH_SHORT).show();
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
     @Override
     public void onBackPressed() {
