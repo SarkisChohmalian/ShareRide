@@ -3,11 +3,14 @@ package com.example.shareride;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText loginEmail, loginPassword;
     private Button loginButton;
     private TextView signupRedirectText;
+    private CheckBox remember;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +39,38 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = findViewById(R.id.login_password);
         loginButton = findViewById(R.id.login_button);
         signupRedirectText = findViewById(R.id.signupRedirect);
+        remember = findViewById(R.id.remember);
 
-        FirebaseUser currentUser = auth.getCurrentUser();
+        // Check if user previously opted for "Remember Me"
+        SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+        boolean rememberMe = sharedPref.getBoolean("rememberMe", false);
+
+        if (rememberMe) {
+            String savedEmail = sharedPref.getString("username", "");
+            String savedPassword = sharedPref.getString("password", "");
+
+            if (!savedEmail.isEmpty() && !savedPassword.isEmpty()) {
+                // Attempt automatic login using saved credentials
+                auth.signInWithEmailAndPassword(savedEmail, savedPassword)
+                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                if (auth.getCurrentUser().isEmailVerified()) {
+                                    Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    finish();
+                                } else {
+                                    Toast.makeText(LoginActivity.this, "Email not verified", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LoginActivity.this, "Auto Login Failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        }
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +90,10 @@ public class LoginActivity extends AppCompatActivity {
                                     public void onSuccess(AuthResult authResult) {
                                         if (auth.getCurrentUser().isEmailVerified()) {
                                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                            if (remember.isChecked()) {
+                                                // Save credentials if "Remember Me" is checked
+                                                saveCredentials(email, pass);
+                                            }
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                             finish();
                                         } else {
@@ -81,5 +119,15 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
+    }
+
+
+    private void saveCredentials(String email, String password) {
+        SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("username", email);
+        editor.putString("password", password);
+        editor.putBoolean("rememberMe", true);
+        editor.apply();
     }
 }

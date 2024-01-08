@@ -1,17 +1,19 @@
 package com.example.shareride;
 
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemId == R.id.nav_scheduled_rides) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ScheduledRidesFragment()).commit();
         } else if (itemId == R.id.nav_logout) {
+            // Clear "Remember Me" preferences on logout
+            clearRememberMe();
+
             auth.signOut();
             Toast.makeText(this, "Logout successful", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
@@ -71,6 +76,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+    // Function to clear "Remember Me" preferences
+    private void clearRememberMe() {
+        SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove("username");
+        editor.remove("password");
+        editor.remove("rememberMe");
+        editor.apply();
+    }
 
     @Override
     public void onBackPressed() {
@@ -81,3 +95,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 }
+
