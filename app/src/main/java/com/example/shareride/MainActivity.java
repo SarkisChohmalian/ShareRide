@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemId == R.id.nav_scheduled_rides) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ScheduledRidesFragment()).commit();
         } else if (itemId == R.id.nav_logout) {
-            // Clear "Remember Me" preferences on logout
+
             clearRememberMe();
 
             auth.signOut();
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    // Function to clear "Remember Me" preferences
+
     private void clearRememberMe() {
         SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
