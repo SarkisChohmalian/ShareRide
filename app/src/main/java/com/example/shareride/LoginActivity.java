@@ -15,8 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText loginEmail, loginPassword;
     private Button loginButton;
-    private TextView signupRedirectText;
+    private TextView signupRedirectText, forgotPasswordText;
     private CheckBox remember;
 
     @Override
@@ -40,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         signupRedirectText = findViewById(R.id.signupRedirect);
         remember = findViewById(R.id.remember);
+        forgotPasswordText = findViewById(R.id.forgetpassword);
 
         // Check if user previously opted for "Remember Me"
         SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
@@ -50,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
             String savedPassword = sharedPref.getString("password", "");
 
             if (!savedEmail.isEmpty() && !savedPassword.isEmpty()) {
-                // Attempt automatic login using saved credentials
                 auth.signInWithEmailAndPassword(savedEmail, savedPassword)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
@@ -91,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                                         if (auth.getCurrentUser().isEmailVerified()) {
                                             Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                                             if (remember.isChecked()) {
-                                                // Save credentials if "Remember Me" is checked
                                                 saveCredentials(email, pass);
                                             }
                                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
@@ -113,6 +114,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        forgotPasswordText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPasswordReset();
+            }
+        });
+
         signupRedirectText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +129,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    public void openPasswordReset() {
+        Intent intent = new Intent(this, PasswordResetActivity.class);
+        startActivity(intent);
+    }
 
     private void saveCredentials(String email, String password) {
         SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
