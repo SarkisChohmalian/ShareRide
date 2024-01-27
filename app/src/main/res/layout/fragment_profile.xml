@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
-                android:drawableLeft="@drawable/call_fill0_wght400_grad0_opsz24"
+                android:drawableLeft="@drawable/phonelol"
                 android:text="Phone Number"
                 android:textSize="18dp" />
 
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:text="See Reiviews"
+                android:text="See Reiviews"/>
 
 
         </LinearLayout>
