@@ -31,17 +31,28 @@
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/logouser" />
 
-            <TextView
+            <ImageView
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="180dp"
+                android:layout_marginTop="-14dp"
+                android:src="@drawable/imagelol"/>
+
+            <TextView
+                android:id="@+id/Name_surename"
+                android:layout_width="wrap_content"
+                android:drawableRight="@drawable/editlol"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:text="Name Username"
+                android:text="Name Surename"
                 android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableRight="@drawable/editlol"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:drawableLeft="@drawable/phonelol"
@@ -50,18 +61,21 @@
 
 
             <TextView
+                android:id="@+id/bio"
                 android:layout_width="wrap_content"
+                android:drawableRight="@drawable/editlol"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="8dp"
                 android:text="Bio" />
 
             <Button
+                android:id="@+id/see_review"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:text="See Reiviews"/>
+                android:text="See Reviews"/>
 
 
         </LinearLayout>
