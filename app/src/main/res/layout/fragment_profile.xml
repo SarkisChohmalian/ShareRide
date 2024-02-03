@@ -7,7 +7,7 @@
     android:background="@drawable/background1"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    tools:context=".ProfileFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

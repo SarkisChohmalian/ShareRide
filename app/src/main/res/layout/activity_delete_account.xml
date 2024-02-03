@@ -7,7 +7,7 @@
     android:background="@drawable/background1"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".SettingsFragment">
+    tools:context=".DeleteAccount">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -25,57 +25,39 @@
             android:padding="24dp">
 
             <TextView
-                android:id="@+id/changeEmail"
-                android:textAlignment="center"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Change Email"
-                android:textSize="18sp"
+                android:text="You are about to delete your account"
                 android:textColor="@color/blue"
-                android:paddingBottom="16dp"
-
-                android:onClick="onTextViewClick" />
-
-            <TextView
-                android:id="@+id/changePhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:textAlignment="center"
-
-                android:text="Change Phone Number"
-                android:textSize="18sp"
-                android:textColor="@color/blue"
-                android:paddingBottom="16dp"
-
-                android:onClick="onTextViewClick" />
+                android:layout_marginBottom="20sp"/>
 
             <TextView
-                android:id="@+id/changePassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Change Password"
-                android:textSize="18sp"
-                android:textColor="@color/blue"
-                android:textAlignment="center"
-                android:paddingBottom="16dp"
-                android:clickable="true"
-                android:onClick="onTextViewClick" />
-
-            <TextView
-                android:id="@+id/deleteAccount"
+                android:id="@+id/deleteAccount2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Delete Account"
+                android:textColor="@color/red"
                 android:textAlignment="center"
+                android:textSize="23sp"/>
 
-                android:textSize="18sp"
-                android:textColor="#FF0000"
-                android:layout_marginTop="20dp"
-                android:clickable="true"
-                android:onClick="onTextViewClick" />
+            <TextView
+                android:id="@+id/goback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Go back"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:layout_marginTop="30dp"
+                android:textAlignment="center"
+                />
+
 
         </LinearLayout>
 
+
     </androidx.cardview.widget.CardView>
+
+
 </LinearLayout>
