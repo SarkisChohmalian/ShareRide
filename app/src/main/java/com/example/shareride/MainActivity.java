@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DriverFragment()).commit();
+            navigationView.setCheckedItem(R.id.nav_driver);
         }
     }
 
@@ -52,8 +52,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
 
-        if (itemId == R.id.nav_home) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+        if(itemId==R.id.nav_passenger){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PassengerFragment()).commit();
+        }else if (itemId == R.id.nav_driver) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DriverFragment()).commit();
         } else if (itemId == R.id.nav_profile) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
         } else if (itemId == R.id.nav_ridehistory) {

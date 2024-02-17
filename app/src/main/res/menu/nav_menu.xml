@@ -4,13 +4,19 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/nav_home"
-            android:title="Home" />
+            android:id="@+id/nav_driver"
+            android:icon="@drawable/baseline_directions_car_24"
+            android:title="Driver" />
+
+        <item
+            android:id="@+id/nav_passenger"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="Passenger" />
+
 
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_baseline_person_24"
+            android:icon="@drawable/profile"
             android:title="Profile" />
 
 
