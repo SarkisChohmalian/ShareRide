@@ -1,93 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".ScheduledRidesFragment">
+    android:orientation="vertical">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Monday"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="30sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Tuesday"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="30sp" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Wednesday"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="30sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Thursday"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="30sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Friday"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="30sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Saturday"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="30sp" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Sunday"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textSize="30sp" />
-
-
+    <!-- CalendarView to display the calendar -->
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
