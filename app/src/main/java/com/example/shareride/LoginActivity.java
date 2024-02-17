@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -134,12 +135,20 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void saveCredentials(String email, String password) {
-        SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("username", email);
-        editor.putString("password", password);
-        editor.putBoolean("rememberMe", true);
-        editor.apply();
+    private void saveCredentials(final String email, final String password) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                SharedPreferences sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("username", email)
+                        .putString("password", password)
+                        .putBoolean("rememberMe", true)
+                        .apply();
+                return null;
+            }
+        }.execute();
     }
+
 }
+
