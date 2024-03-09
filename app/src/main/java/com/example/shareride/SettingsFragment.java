@@ -1,5 +1,6 @@
 package com.example.shareride;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,11 +36,11 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        // Empty onClickListener for "Change Email" and "Change Phone Number"
+        // Start ChangeEmailActivity when "Change Email" is clicked
         changeEmailTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Do nothing
+                startActivity(new Intent(getActivity(), ChangeEmailActivity.class));
             }
         });
 
@@ -71,3 +72,4 @@ public class SettingsFragment extends Fragment {
         startActivity(new Intent(getActivity(), DeleteAccount.class));
     }
 }
+
