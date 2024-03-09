@@ -2,17 +2,13 @@ package com.example.shareride;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CalendarView;
 
-public class ScheduledRidesFragment extends Fragment {
+import androidx.fragment.app.Fragment;
 
-    private CalendarView calendarView;
+public class RequestsFragment extends Fragment {
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -20,10 +16,7 @@ public class ScheduledRidesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_scheduled_rides, container, false);
-
-        // Find the CalendarView in the layout
-        calendarView = view.findViewById(R.id.calendarView);
+        View view = inflater.inflate(R.layout.fragment_requests, container, false);
 
         return view;
     }

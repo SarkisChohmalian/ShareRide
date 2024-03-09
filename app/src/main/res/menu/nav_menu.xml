@@ -15,6 +15,12 @@
 
 
         <item
+            android:id="@+id/nav_scheduled_rides"
+            android:icon="@drawable/bell"
+            android:title="Requests" />
+
+
+        <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/profile"
             android:title="Profile" />
@@ -26,10 +32,7 @@
             android:title="Ride History" />
 
 
-        <item
-            android:id="@+id/nav_scheduled_rides"
-            android:icon="@drawable/calendar"
-            android:title="Scheduled Rides" />
+
 
 
         <item
