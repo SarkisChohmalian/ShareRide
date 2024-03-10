@@ -14,11 +14,13 @@
         android:background="@android:color/white" />
 
     <SearchView
+        android:layout_marginTop="10dp"
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/searchview_bg"
         android:iconifiedByDefault="false"
-        android:backgroundTint="@color/white"
         android:queryHint="Search..." />
+
 
 </FrameLayout>
